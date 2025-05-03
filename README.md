@@ -23,7 +23,7 @@ ECS::World world;
 > Entities are composed from components.
 > They itself do not store any data. (Entity is just an uint32_t)
 
------------------------------------------------------------------------
+---
 ==> Creating entities
 
 ```
@@ -44,7 +44,7 @@ ECS::Entity entity = world.entity(PlayerArchetype);
  Removes the entity and its components.  
 world.remove(entity);  
 ```
------------------------------------------------------------------------
+---
 ==> Manipulating the components of entity
   
 ```
@@ -60,7 +60,7 @@ world.set_components(entity, PlayerArchetype);
 // This is O(1), Slower if world needs to generate new Archetype.  
 world.add_component(entity, componentA);  
 ```
------------------------------------------------------------------------
+---
 ==> Removing components from entity  
   
 ```
@@ -68,7 +68,7 @@ world.add_component(entity, componentA);
 // This is O(1), Slower if world needs to generate new Archetype.  
 world.remove_component(entity, componentA);  
 ```
------------------------------------------------------------------------
+---
 ==> Working with components  
   
 ```
@@ -90,7 +90,7 @@ world.get_component<Transform>(entity, transform) => returns Transform&
 > Creating a component doesnt automatically use memory.  
 > Memory is used only when it is a part of Archetype (Entity)  
   
------------------------------------------------------------------------
+---
 ==> Creating a component
 ```
 // Defining a struct for the component layout  
@@ -142,4 +142,3 @@ ECS::Component p2 = world.component<Position>;
 // Really slow operation. If you want to reuse it. Save it somewhere.  
 ECS::Archetype enemy = world.get_archetype({ HP, Transform, Sprite });  
 ```
-
